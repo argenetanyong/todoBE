@@ -18,7 +18,7 @@ mongoose
   .connect(
     "mongodb+srv://logan:14344@cluster0.mfkia.mongodb.net/test?authSource=admin&replicaSet=atlas-cvlux3-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true"
   )
-  .then(() => console.log("Connected to MongoDB..."))
+  .then(() => console.log("Connected to Remote MongoDB..."))
   .catch((err) => console.error("Could not connect to MongoDB..."));
 
 app.use(express.json());
