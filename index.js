@@ -16,7 +16,7 @@ mongoose
 // The hardcoded connection string is for portfolio/demo purpose only
 mongoose
   .connect(
-    "mongodb+srv://argene_tanyong@yahoo.com:Webtools_3123@cluster0.mfkia.mongodb.net/todoBE?authSource=admin&replicaSet=atlas-cvlux3-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true"
+    "mongodb+srv://logan:14344@cluster0.mfkia.mongodb.net/todoBE?authSource=admin&replicaSet=atlas-cvlux3-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true"
   )
   .then(() => console.log("Connected to Remote MongoDB..."))
   .catch((err) => console.error("Could not connect to MongoDB..."));
