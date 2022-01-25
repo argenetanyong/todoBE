@@ -15,7 +15,7 @@ mongoose
 // mongodb connection string should be set in the environment variable
 // The hardcoded connection string is for portfolio/demo purpose only
 mongoose
-  .connect("mongodb+srv://logan:14344@cluster0.mfkia.mongodb.net/todos")
+  .connect("sadasdadsa")
   .then(() => console.log("Connected to Remote MongoDB..."))
   .catch((err) => console.error("Could not connect to MongoDB..."));
 
