@@ -20,6 +20,7 @@ const Todo = mongoose.model(
 );
 
 router.get("/", async (req, res) => {
+  console.log("SHOULD GET THE LIST OF TODOS");
   const todos = await Todo.find().select("-__v").sort("name");
   res.send(todos);
 });
