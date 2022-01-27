@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const todos = require("./routes/todos");
 const express = require("express");
 const app = express();
+const compression = require("compression");
+const helment = require("helmet");
 
 /*
 
@@ -15,11 +17,6 @@ mongoose
 
 // mongodb connection string should be set in the environment variable
 // The hardcoded connection string is for portfolio/demo purpose only
-/* mongoose
-  .connect("mongodb+srv://logan:14344@cluster0.mfkia.mongodb.net/todoBE")
-  .then(() => console.log("Connected to REMOTE MongoDB..."))
-  .catch((err) => console.error("Could not connect to MongoDB..."));
-*/
 
 mongoose
   .connect(
@@ -30,6 +27,8 @@ mongoose
 
 app.use(express.json());
 app.use("/api/todos", todos);
+app.use(compression());
+app.use(helmet());
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
