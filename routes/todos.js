@@ -76,7 +76,7 @@ router.get("/:id", async (req, res) => {
 
 function validateTodo(todo) {
   const schema = {
-    text: Joi.string().min(3).required(),
+    text: Joi.string().min(1).required(),
     completed: Joi.boolean().required(),
   };
 
