@@ -10,7 +10,7 @@ const Todo = mongoose.model(
     text: {
       type: String,
       required: true,
-      minlength: 3,
+      minlength: 1,
       maxlength: 50,
     },
     completed: {
