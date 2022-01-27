@@ -2,6 +2,9 @@ const Joi = require("joi");
 const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
+const cors = require("cors");
+
+router.use(cors());
 
 const Todo = mongoose.model(
   "Todos",
@@ -23,6 +26,7 @@ router.get("/", async (req, res) => {
   console.log("SHOULD GET THE LIST OF TODOS");
   const todos = await Todo.find().select("-__v").sort("name");
   res.send(todos);
+  res.json({ msg: "This is CORS-enabled for all origins!" });
 });
 
 router.post("/", async (req, res) => {
