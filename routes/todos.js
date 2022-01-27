@@ -7,7 +7,7 @@ const cors = require("cors");
 const Todo = mongoose.model(
   "Todos",
   new mongoose.Schema({
-    name: {
+    text: {
       type: String,
       required: true,
       minlength: 3,
@@ -24,7 +24,7 @@ router.use(cors());
 
 router.get("/", async (req, res) => {
   console.log("SHOULD GET THE LIST OF TODOS");
-  const todos = await Todo.find().select("-__v").sort("name");
+  const todos = await Todo.find().select("-__v").sort("text");
   res.send(todos);
 });
 
@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
   const { error } = validateTodo(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  let todo = new Todo({ name: req.body.name, completed: req.body.completed });
+  let todo = new Todo({ text: req.body.text, completed: req.body.completed });
   todo = await todo.save();
 
   res.send(todo);
@@ -44,7 +44,7 @@ router.put("/:id", async (req, res) => {
 
   const todo = await Todo.findByIdAndUpdate(
     req.params.id,
-    { name: req.body.name, completed: req.body.completed },
+    { text: req.body.text, completed: req.body.completed },
     {
       new: true,
     }
@@ -76,7 +76,7 @@ router.get("/:id", async (req, res) => {
 
 function validateTodo(todo) {
   const schema = {
-    name: Joi.string().min(3).required(),
+    text: Joi.string().min(3).required(),
     completed: Joi.boolean().required(),
   };
 
