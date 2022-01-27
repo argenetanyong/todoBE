@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const todos = require("./routes/todos");
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const compression = require("compression");
 const helmet = require("helmet");
 
@@ -29,6 +30,7 @@ app.use(express.json());
 app.use("/api/todos", todos);
 app.use(compression());
 app.use(helmet());
+app.use(cors());
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
